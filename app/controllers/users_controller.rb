@@ -7,6 +7,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.order(id: :desc).page(params[:page])
+    counts(@user)
   end
 
   def new
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = 'ユーザを登録しました。'
       redirect_to @user
+      #redirect_to user_path(@user.id)
     else
       flash.now[:danger] = 'ユーザの登録に失敗しました。'
       render :new
