@@ -1,12 +1,12 @@
 class CreateFavorites < ActiveRecord::Migration[5.2]
-  def change
-    create_table :favorites do |t|
-      t.references :user, foreign_key: true
-      t.references :micropost, foreign_key: {to_tables:users}
+    def change
+  #   create_table :favorites do |t|
+  #     t.references :user, foreign_key: true
+  #     t.references :micropost, foreign_key: {to_tables:users}
 
-      t.timestamps
+  #     t.timestamps
       
-      t.index [:user_id, :micropost_id], unique: true
-    end
+  #     t.index [:user_id, :micropost_id], unique: true
+  #  end
   end
 end
